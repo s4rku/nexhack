@@ -24,7 +24,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "NEXHACK | The Next Generation of Student Tech Community",
+  title: {
+    default: "NEXHACK | The Next Generation of Student Tech Community",
+    template: "%s | NEXHACK",
+  },
   description:
     "Build. Hack. Learn. Connect. NEXHACK brings students, developers, creators, and innovators together through national hackathons, technical workshops, knowledge sessions, and community experiences.",
   keywords: [
@@ -59,7 +62,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200&h=630",
+        url: "https://nexhack.tech/og-image.png",
         width: 1200,
         height: 630,
         alt: "NEXHACK Student Tech Community & Hackathons",
@@ -71,7 +74,7 @@ export const metadata: Metadata = {
     title: "NEXHACK | Student Tech Community & Hackathons",
     description: "Build. Hack. Learn. Connect. Join the premier student technology ecosystem.",
     creator: "@nexhack_tech",
-    images: ["https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200&h=630"],
+    images: ["https://nexhack.tech/og-image.png"],
   },
   icons: {
     icon: [
@@ -89,6 +92,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -103,9 +113,11 @@ export default function RootLayout({
     "@type": "Organization",
     name: "NEXHACK",
     url: "https://nexhack.tech",
-    logo: "https://nexhack.tech/logo.png",
+    logo: "https://nexhack.tech/logo-icon.png",
     description:
       "Student-driven technology community organizing national hackathons, technical workshops, knowledge sessions, and innovation experiences.",
+    foundingDate: "2024",
+    email: "hello@nexhack.tech",
     sameAs: [
       "https://discord.gg/nexhack",
       "https://x.com/nexhack_tech",
@@ -113,6 +125,26 @@ export default function RootLayout({
       "https://instagram.com/nexhack.tech",
       "https://github.com/nexhack-tech",
     ],
+    knowsAbout: [
+      "Hackathons",
+      "Student Innovation",
+      "Artificial Intelligence",
+      "Web Development",
+      "Software Engineering",
+      "Open Source",
+    ],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "NEXHACK",
+    url: "https://nexhack.tech",
+    description: "The Next Generation Student Tech Community & National Hackathons",
+    publisher: {
+      "@type": "Organization",
+      name: "NEXHACK",
+    },
   };
 
   return (
@@ -121,6 +153,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="min-h-screen bg-white text-[#0A0F1D] font-sans antialiased selection:bg-blue-600 selection:text-white">
