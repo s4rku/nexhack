@@ -1032,30 +1032,35 @@ export const COMMUNITY_DISCUSSION_SPACES = [
     description: "Daily tech chatter, question of the day, and connecting with students from other colleges.",
     members: "10k+",
     icon: "MessageSquare",
+    href: "https://chat.whatsapp.com/IZSIwb5Zu19CB8qOax8NUd",
   },
   {
     name: "#hackathon-squad-finder",
     description: "Looking for a frontend designer, backend coder, or pitch lead? Assemble your dream team.",
     members: "3.5k+",
     icon: "Users",
+    href: "https://chat.whatsapp.com/CwFjSEfDbqj5cIOfTFMn2R",
   },
   {
     name: "#code-help-and-debug",
     description: "Stuck on an error, CORS issue, or build bug? Get fast help from fellow student coders.",
     members: "4.2k+",
     icon: "Terminal",
+    href: "https://chat.whatsapp.com/LTSp2W4mNuN0fNWbbzSqqt",
   },
   {
     name: "#project-showcase",
     description: "Share your GitHub repos, live deployments, and side projects for feedback and stars.",
     members: "2.8k+",
     icon: "Rocket",
+    href: "https://chat.whatsapp.com/KbxEhGclu5iJNFtzlDndCB",
   },
   {
     name: "#internship-opportunities",
     description: "Verified student internships, open-source programs (GSoC, LFX), and hackathon job bounties.",
     members: "6.1k+",
     icon: "Briefcase",
+    href: "https://chat.whatsapp.com/LdVUROvCIZ8B9RuetBiOgn",
   },
 ];
 
