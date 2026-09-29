@@ -232,7 +232,7 @@ import {
                     </div>
 
                     <a
-                      href={SITE_CONFIG.whatsappUrl}
+                      href={space.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-purple-600 hover:text-purple-700"
@@ -265,7 +265,7 @@ import {
                 </div>
 
                 <a
-                  href={SITE_CONFIG.whatsappUrl}
+                  href="https://chat.whatsapp.com/CwFjSEfDbqj5cIOfTFMn2R"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all shrink-0"
