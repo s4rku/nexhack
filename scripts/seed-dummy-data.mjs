@@ -43,7 +43,7 @@ async function seed() {
       description: "A fast-paced 48-hour global sprint challenging developers to create next-generation autonomous software and open-source generative tools.",
       status: "Upcoming",
       mode: "Hybrid",
-      location: "Bengaluru Innovation Hub + Discord Track",
+      location: "Bengaluru Innovation Hub + Online Track",
       dateRange: "November 14-16, 2026",
       prizePool: "₹2,50,000 + Cloud Grants",
       registeredCount: 142,

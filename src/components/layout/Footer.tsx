@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import { SITE_CONFIG } from "@/data/nexhackData";
 import {
-  DiscordIcon,
   WhatsAppIcon,
   LinkedInIcon,
   InstagramIcon,
@@ -35,15 +34,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onJoinClick }) => {
             </p>
 
             <div className="flex items-center flex-wrap gap-2.5 pt-1">
-              <a
-                href={SITE_CONFIG.discordUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white transition-colors"
-                aria-label="Discord"
-              >
-                <DiscordIcon className="w-4 h-4" />
-              </a>
               <a
                 href={SITE_CONFIG.whatsappUrl}
                 target="_blank"
@@ -177,17 +167,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onJoinClick }) => {
               Community Hubs
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li>
-                <a
-                  href={SITE_CONFIG.discordUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition-colors flex items-center gap-1.5"
-                >
-                  <DiscordIcon className="w-3.5 h-3.5 text-indigo-400" />
-                  Discord
-                </a>
-              </li>
               <li>
                 <a
                   href={SITE_CONFIG.whatsappUrl}

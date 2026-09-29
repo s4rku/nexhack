@@ -22,7 +22,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type })
           </p>
           <h5 className="font-bold text-slate-900 text-sm">1. Information We Collect</h5>
           <p>
-            When registering for NEXHACK events or joining our Discord/WhatsApp communities, we
+            When registering for NEXHACK events or joining our WhatsApp communities, we
             collect your full name, student email address, institution/school name, year of
             graduation, and technology interests.
           </p>
@@ -47,7 +47,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type })
         <div className="space-y-4 text-xs text-slate-600 leading-relaxed">
           <p>
             Welcome to the <strong>NEXHACK Community Ecosystem</strong>. By participating in our
-            hackathons, Discord channels, and workshops, you agree to these terms.
+            hackathons, community channels, and workshops, you agree to these terms.
           </p>
           <h5 className="font-bold text-slate-900 text-sm">1. Eligibility</h5>
           <p>

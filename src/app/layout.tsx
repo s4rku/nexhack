@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NEXHACK | Student Tech Community & Hackathons",
     description: "Build. Hack. Learn. Connect. Join the premier student technology ecosystem.",
-    creator: "@nexhack_tech",
+    creator: "@nexhack_in",
     images: ["https://nexhack.tech/og-image.png"],
   },
   icons: {
@@ -119,10 +119,9 @@ export default function RootLayout({
     foundingDate: "2024",
     email: "hello@nexhack.tech",
     sameAs: [
-      "https://discord.gg/nexhack",
-      "https://x.com/nexhack_tech",
+      "https://x.com/nexhack_in",
       "https://linkedin.com/company/nexhack",
-      "https://instagram.com/nexhack.tech",
+      "https://www.instagram.com/nexhack.in/",
       "https://github.com/nexhack-tech",
     ],
     knowsAbout: [
