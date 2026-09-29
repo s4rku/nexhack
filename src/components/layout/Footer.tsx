@@ -135,10 +135,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onJoinClick }) => {
               </li>
               <li>
                 <a
-                  href={`mailto:${SITE_CONFIG.contactEmail}`}
+                  href={`mailto:${SITE_CONFIG.supportEmail}`}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Contact Email
+                  support@nexhack.in
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  {SITE_CONFIG.phone}
                 </a>
               </li>
               <li>
@@ -148,15 +156,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onJoinClick }) => {
                 >
                   Code of Conduct
                 </button>
-              </li>
-              <li className="pt-1">
-                <Link
-                  href="/admin"
-                  className="text-slate-500 hover:text-blue-400 font-mono text-[11px] transition-colors flex items-center gap-1"
-                >
-                  <span>Admin Portal</span>
-                  <span>&rarr;</span>
-                </Link>
               </li>
             </ul>
           </div>

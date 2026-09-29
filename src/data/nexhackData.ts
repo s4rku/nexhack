@@ -124,6 +124,9 @@ export const SITE_CONFIG = {
   xUrl: "https://x.com/nexhack_in",
   githubUrl: "https://github.com/nexhack-tech",
   contactEmail: "hello@nexhack.tech",
+  supportEmail: "support@nexhack.in",
+  founderEmail: "sarku@nexhack.in",
+  phone: "8383071603",
   campusEmail: "partners@nexhack.tech",
 };
 
