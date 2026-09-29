@@ -31,15 +31,12 @@ import {
   Share2,
 } from "lucide-react";
 import {
-  DiscordIcon,
   WhatsAppIcon,
   LinkedInIcon,
   GitHubIcon,
   XTwitterIcon,
   InstagramIcon,
-} from "@/components/ui/SocialIcons";
-
-export default function CommunityPage() {
+} from "@/components/ui/SocialIcons";export default function CommunityPage() {
   const [isJoinOpen, setIsJoinOpen] = useState(false);
   const [citySearch, setCitySearch] = useState("");
   const [legalModalType, setLegalModalType] = useState<"privacy" | "terms" | "code_of_conduct" | null>(null);
@@ -82,18 +79,8 @@ export default function CommunityPage() {
                 Connect with 10,000+ student developers, open-source contributors, UI designers, and peer mentors across 100+ schools and colleges in India.
               </p>
 
-              {/* Main Discord & WhatsApp CTAs */}
+              {/* Main WhatsApp & LinkedIn CTAs */}
               <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-                <a
-                  href={SITE_CONFIG.discordUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3.5 rounded-xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-2"
-                >
-                  <DiscordIcon className="w-4 h-4 fill-white" />
-                  <span>Join Discord Community</span>
-                </a>
-
                 <a
                   href={SITE_CONFIG.whatsappUrl}
                   target="_blank"
@@ -101,7 +88,7 @@ export default function CommunityPage() {
                   className="px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-2"
                 >
                   <WhatsAppIcon className="w-4 h-4 fill-white" />
-                  <span>Join WhatsApp Broadcast</span>
+                  <span>Join WhatsApp Community</span>
                 </a>
 
                 <button
@@ -200,7 +187,7 @@ export default function CommunityPage() {
           </div>
         </section>
 
-        {/* 3. DISCORD CHANNELS & SPACES */}
+        {/* 3. COMMUNITY CHANNELS & SPACES */}
         <section className="py-16 sm:py-24 bg-slate-50/80 border-b border-slate-200/80">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
@@ -208,7 +195,7 @@ export default function CommunityPage() {
                 VIRTUAL CAMPUS
               </span>
               <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                Our Discord Discussion Spaces
+                Our Community Discussion Spaces
               </h2>
               <p className="text-sm text-slate-600">
                 Join focused channels where students share code, debug stack traces, and form hackathon squads in real time.
@@ -245,12 +232,12 @@ export default function CommunityPage() {
                     </div>
 
                     <a
-                      href={SITE_CONFIG.discordUrl}
+                      href={SITE_CONFIG.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-purple-600 hover:text-purple-700"
                     >
-                      <span>Enter Channel</span>
+                      <span>Join Channel</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </a>
                   </div>
@@ -278,12 +265,12 @@ export default function CommunityPage() {
                 </div>
 
                 <a
-                  href={SITE_CONFIG.discordUrl}
+                  href={SITE_CONFIG.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all shrink-0"
                 >
-                  Open #hackathon-squad-finder
+                  Join #hackathon-squad-finder
                 </a>
               </div>
 
@@ -356,16 +343,6 @@ export default function CommunityPage() {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 max-w-3xl mx-auto">
-              <a
-                href={SITE_CONFIG.discordUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-[#5865F2] hover:bg-indigo-50/50 text-slate-800 text-xs font-bold transition-all flex items-center gap-2.5"
-              >
-                <DiscordIcon className="w-4 h-4 fill-[#5865F2]" />
-                <span>Discord Lounge</span>
-              </a>
-
               <a
                 href={SITE_CONFIG.whatsappUrl}
                 target="_blank"

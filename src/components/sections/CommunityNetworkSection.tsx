@@ -10,7 +10,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import {
-  DiscordIcon,
   WhatsAppIcon,
   LinkedInIcon,
   InstagramIcon,
@@ -37,15 +36,6 @@ export const CommunityNetworkSection: React.FC<CommunityNetworkSectionProps> = (
   ];
 
   const socialChannels = [
-    {
-      name: "Discord Server",
-      desc: "24/7 Hacker Lounge, team formation, code debugging channels",
-      members: "Community Hub",
-      href: SITE_CONFIG.discordUrl,
-      icon: DiscordIcon,
-      color: "bg-indigo-50 border-indigo-200 text-indigo-700 hover:bg-indigo-100",
-      buttonColor: "bg-indigo-600 hover:bg-indigo-700",
-    },
     {
       name: "WhatsApp Community",
       desc: "Instant sprint announcements, exclusive RSVP drops, priority passes",

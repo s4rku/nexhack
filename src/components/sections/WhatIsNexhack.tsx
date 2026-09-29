@@ -93,7 +93,7 @@ export const WhatIsNexhack: React.FC<WhatIsNexhackProps> = ({ onJoinClick }) => 
               Want to experience the builder journey first-hand?
             </h4>
             <p className="text-sm text-slate-600">
-              Join free, pick a track, and get invited to our next private Discord sprint.
+            Join free, pick a track, and get invited to our next hackathon sprint.
             </p>
           </div>
           <button

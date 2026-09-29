@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Join thousands of passionate student developers, UI/UX designers, AI researchers, and campus innovators. Find hackathon teammates, share projects, and collaborate.",
   keywords: [
     "student developer community",
-    "coding community discord",
+    "coding community online",
     "hackathon teams",
     "student tech network",
     "open source student contributors",

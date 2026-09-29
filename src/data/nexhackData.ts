@@ -118,11 +118,10 @@ export const SITE_CONFIG = {
     "NEXHACK is a student-focused technology community organizing hackathons, coding competitions, technology workshops, knowledge sessions, networking events, innovation challenges, and tech experiences across schools and colleges.",
   foundedYear: 2024,
   currentYear: 2026,
-  discordUrl: "https://discord.gg/nexhack",
-  whatsappUrl: "https://chat.whatsapp.com/nexhack-community",
+  whatsappUrl: "https://chat.whatsapp.com/CNHePNAmYHE8Y4klu7TPMq",
   linkedinUrl: "https://linkedin.com/company/nexhack",
-  instagramUrl: "https://instagram.com/nexhack.tech",
-  xUrl: "https://x.com/nexhack_tech",
+  instagramUrl: "https://www.instagram.com/nexhack.in/",
+  xUrl: "https://x.com/nexhack_in",
   githubUrl: "https://github.com/nexhack-tech",
   contactEmail: "hello@nexhack.tech",
   campusEmail: "partners@nexhack.tech",
@@ -235,7 +234,7 @@ export const NEXHACK_PILLARS: PillarItem[] = [
     description:
       "Build a network that lasts throughout your college journey and career. Find hackathon teammates, potential co-founders, and mentor connections.",
     bulletPoints: [
-      "Active 24/7 Discord developer community",
+      "Active 24/7 WhatsApp & community channels",
       "Campus chapters and local student tech meetups",
       "Cross-college collaboration across schools and universities",
     ],
@@ -299,7 +298,7 @@ export const HACKATHONS_DATA: HackathonItem[] = [
       "A national student hackathon focused on turning raw ideas into tangible MVPs with mentorship rounds and developer showcases.",
     status: "Upcoming",
     mode: "Online",
-    location: "Virtual (Discord / Devfolio)",
+    location: "Virtual (Devfolio / Online)",
     dateRange: "Upcoming Sprint",
     prizePool: "Cash Grants & Swag",
     registeredCount: 0,
@@ -734,7 +733,7 @@ export const FAQS_DATA: FaqItem[] = [
     category: "Teams",
     question: "What if I don't have a team?",
     answer:
-      "You can join solo! We organize team formation channels and mixers on our Discord where you can meet teammates before the sprint starts.",
+      "You can join solo! We organize team formation channels and mixers on WhatsApp where you can meet teammates before the sprint starts.",
   },
   {
     category: "Campus Chapters",

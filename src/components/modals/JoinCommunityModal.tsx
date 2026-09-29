@@ -5,7 +5,7 @@ import { Modal } from "../ui/Modal";
 import confetti from "canvas-confetti";
 import { CheckCircle2, MessageSquare, Send, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
 import { SITE_CONFIG } from "@/data/nexhackData";
-import { DiscordIcon, WhatsAppIcon } from "../ui/SocialIcons";
+import { WhatsAppIcon, LinkedInIcon } from "../ui/SocialIcons";
 
 interface JoinCommunityModalProps {
   isOpen: boolean;
@@ -133,24 +133,6 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({
           {/* Social quick connect cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left pt-1">
             <a
-              href={SITE_CONFIG.discordUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 p-3.5 sm:p-4 rounded-xl border border-indigo-200 bg-indigo-50/60 hover:bg-indigo-50 transition-colors group"
-            >
-              <div className="p-2 sm:p-2.5 bg-indigo-600 text-white rounded-lg group-hover:scale-105 transition-transform shrink-0">
-                <DiscordIcon className="w-5 h-5" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="font-semibold text-slate-900 text-xs sm:text-sm flex items-center gap-1">
-                  <span>Discord Server</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-indigo-600 transition-transform group-hover:translate-x-1 shrink-0" />
-                </div>
-                <div className="text-[11px] text-slate-500 truncate">Hacker Lounge & Team Mixer</div>
-              </div>
-            </a>
-
-            <a
               href={SITE_CONFIG.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -161,10 +143,28 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({
               </div>
               <div className="min-w-0 flex-1">
                 <div className="font-semibold text-slate-900 text-xs sm:text-sm flex items-center gap-1">
-                  <span>WhatsApp Alerts</span>
+                  <span>WhatsApp Community</span>
                   <ArrowRight className="w-3.5 h-3.5 text-emerald-600 transition-transform group-hover:translate-x-1 shrink-0" />
                 </div>
                 <div className="text-[11px] text-slate-500 truncate">Sprint & event drop alerts</div>
+              </div>
+            </a>
+
+            <a
+              href={SITE_CONFIG.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-3.5 sm:p-4 rounded-xl border border-blue-200 bg-blue-50/60 hover:bg-blue-50 transition-colors group"
+            >
+              <div className="p-2 sm:p-2.5 bg-blue-600 text-white rounded-lg group-hover:scale-105 transition-transform shrink-0">
+                <LinkedInIcon className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="font-semibold text-slate-900 text-xs sm:text-sm flex items-center gap-1">
+                  <span>LinkedIn Network</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-blue-600 transition-transform group-hover:translate-x-1 shrink-0" />
+                </div>
+                <div className="text-[11px] text-slate-500 truncate">Student spotlights & career updates</div>
               </div>
             </a>
           </div>
@@ -313,7 +313,7 @@ export const JoinCommunityModal: React.FC<JoinCommunityModalProps> = ({
               {loading ? "Registering..." : "Complete Free Registration"}
             </button>
             <p className="text-center text-[10px] sm:text-xs text-slate-500 mt-2">
-              100% Free Forever • Zero spam • Direct access to Discord & hackathons
+              100% Free Forever • Zero spam • Direct access to community & hackathons
             </p>
           </div>
         </form>
