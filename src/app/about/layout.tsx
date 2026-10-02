@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     title: "About NEXHACK | Mission & Student Tech Community",
     description:
       "Empowering students across universities and schools through national hackathons, technical workshops, knowledge sessions, and community experiences.",
-    url: "https://nexhack.tech/about",
+    url: "https://nexhack.in/about",
     images: [
       {
-        url: "https://nexhack.tech/og-image.png",
+        url: "https://nexhack.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "About NEXHACK Community",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About NEXHACK | Mission & Student Tech Community",
     description: "Learn about NEXHACK's mission, vision, and student tech community.",
-    images: ["https://nexhack.tech/og-image.png"],
+    images: ["https://nexhack.in/og-image.png"],
   },
 };
 
@@ -51,13 +51,13 @@ export default function AboutLayout({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://nexhack.tech",
+        item: "https://nexhack.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "About Us",
-        item: "https://nexhack.tech/about",
+        item: "https://nexhack.in/about",
       },
     ],
   };

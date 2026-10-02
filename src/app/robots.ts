@@ -14,7 +14,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/admin"],
       },
     ],
-    sitemap: "https://nexhack.tech/sitemap.xml",
-    host: "https://nexhack.tech",
+    sitemap: "https://nexhack.in/sitemap.xml",
+    host: "https://nexhack.in",
   };
 }

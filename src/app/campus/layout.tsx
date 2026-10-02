@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     title: "NEXHACK Campus Chapters | Partner With Us",
     description:
       "Bring national hackathons and developer experiences to your university or school. 100% free partnership and student empowerment.",
-    url: "https://nexhack.tech/campus",
+    url: "https://nexhack.in/campus",
     images: [
       {
-        url: "https://nexhack.tech/og-image.png",
+        url: "https://nexhack.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "NEXHACK Campus Chapters",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NEXHACK Campus Chapters & College Partnerships",
     description: "Empower your institution with national hackathons and student tech events.",
-    images: ["https://nexhack.tech/og-image.png"],
+    images: ["https://nexhack.in/og-image.png"],
   },
 };
 
@@ -50,13 +50,13 @@ export default function CampusLayout({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://nexhack.tech",
+        item: "https://nexhack.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Campus Chapters",
-        item: "https://nexhack.tech/campus",
+        item: "https://nexhack.in/campus",
       },
     ],
   };

@@ -116,18 +116,18 @@ export const SITE_CONFIG = {
   category: "Student Tech Community / Hackathons / Innovation / Technology Events",
   description:
     "NEXHACK is a student-focused technology community organizing hackathons, coding competitions, technology workshops, knowledge sessions, networking events, innovation challenges, and tech experiences across schools and colleges.",
-  foundedYear: 2024,
+  foundedYear: 2026,
   currentYear: 2026,
   whatsappUrl: "https://chat.whatsapp.com/CNHePNAmYHE8Y4klu7TPMq",
   linkedinUrl: "https://linkedin.com/company/nexhack",
   instagramUrl: "https://www.instagram.com/nexhack.in/",
   xUrl: "https://x.com/nexhack_in",
-  githubUrl: "https://github.com/nexhack-tech",
-  contactEmail: "hello@nexhack.tech",
+  githubUrl: "https://github.com/nexhack-in",
+  contactEmail: "hello@nexhack.in",
   supportEmail: "support@nexhack.in",
-  founderEmail: "sarku@nexhack.in",
+  founderEmail: "sourav@nexhack.in",
   phone: "8383071603",
-  campusEmail: "partners@nexhack.tech",
+  campusEmail: "partners@nexhack.in",
 };
 
 // -------------------------------------------------------------

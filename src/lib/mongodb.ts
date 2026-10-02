@@ -8,6 +8,10 @@ import {
   DbNewsletter,
   DbAdminLog,
   DbAdminOtp,
+  DbUserProfile,
+  DbTeam,
+  DbTeamMember,
+  DbTeamJoinRequest,
 } from "./dbTypes";
 
 const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/nexhack";
@@ -219,6 +223,9 @@ const inMemoryStore = {
     },
   ] as DbAdminLog[],
   otps: [] as DbAdminOtp[],
+  userProfiles: [] as DbUserProfile[],
+  teams: [] as DbTeam[],
+  teamJoinRequests: [] as DbTeamJoinRequest[],
 };
 
 export async function connectToDatabase(): Promise<{ client: MongoClient | null; db: Db | null; isUsingMongo: boolean }> {
@@ -729,5 +736,319 @@ export const dbService = {
     await this.logAction("Admin Logged In via Email OTP", normalizedEmail, "Admin");
 
     return { success: true };
+  },
+
+  // ── 9. USER PROFILES ────────────────────────────────────────────────────────
+
+  async getUserProfile(userId: string): Promise<DbUserProfile | null> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const doc = await db.collection("user_profiles").findOne({ userId });
+      return doc as unknown as DbUserProfile | null;
+    }
+    return inMemoryStore.userProfiles.find((p) => p.userId === userId) ?? null;
+  },
+
+  async upsertUserProfile(
+    userId: string,
+    email: string,
+    updates: Partial<Omit<DbUserProfile, "userId" | "email" | "createdAt">>
+  ): Promise<DbUserProfile> {
+    const now = new Date().toISOString();
+    const { db, isUsingMongo } = await connectToDatabase();
+
+    if (isUsingMongo && db) {
+      await db.collection("user_profiles").updateOne(
+        { userId },
+        {
+          $set: { ...updates, userId, email, updatedAt: now },
+          $setOnInsert: { createdAt: now },
+        },
+        { upsert: true }
+      );
+      const doc = await db.collection("user_profiles").findOne({ userId });
+      return doc as unknown as DbUserProfile;
+    }
+
+    const idx = inMemoryStore.userProfiles.findIndex((p) => p.userId === userId);
+    if (idx !== -1) {
+      inMemoryStore.userProfiles[idx] = {
+        ...inMemoryStore.userProfiles[idx],
+        ...updates,
+        updatedAt: now,
+      };
+      return inMemoryStore.userProfiles[idx];
+    }
+    const newProfile: DbUserProfile = {
+      userId,
+      email,
+      ...updates,
+      createdAt: now,
+      updatedAt: now,
+    };
+    inMemoryStore.userProfiles.push(newProfile);
+    return newProfile;
+  },
+
+  // ── 10. TEAMS ───────────────────────────────────────────────────────────────
+
+  async getTeam(id: string): Promise<DbTeam | null> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const doc = await db.collection("teams").findOne({ id });
+      return doc as unknown as DbTeam | null;
+    }
+    return inMemoryStore.teams.find((t) => t.id === id) ?? null;
+  },
+
+  async getTeamByInviteCode(code: string): Promise<DbTeam | null> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const doc = await db.collection("teams").findOne({ inviteCode: code.toUpperCase() });
+      return doc as unknown as DbTeam | null;
+    }
+    return inMemoryStore.teams.find((t) => t.inviteCode === code.toUpperCase()) ?? null;
+  },
+
+  async getTeamsByUserId(userId: string): Promise<DbTeam[]> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const list = await db
+        .collection("teams")
+        .find({ "members.userId": userId })
+        .sort({ createdAt: -1 })
+        .toArray();
+      return list as unknown as DbTeam[];
+    }
+    return inMemoryStore.teams.filter((t) =>
+      t.members.some((m) => m.userId === userId)
+    );
+  },
+
+  async getAllTeams(): Promise<DbTeam[]> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const list = await db.collection("teams").find({}).sort({ createdAt: -1 }).toArray();
+      return list as unknown as DbTeam[];
+    }
+    return [...inMemoryStore.teams];
+  },
+
+  async createTeam(data: {
+    name: string;
+    tagline?: string;
+    hackathonId?: string;
+    captain: DbTeamMember;
+    maxSize?: number;
+  }): Promise<DbTeam> {
+    const now = new Date().toISOString();
+    const inviteCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+    const newTeam: DbTeam = {
+      id: `team-${Date.now()}`,
+      name: data.name.trim(),
+      tagline: data.tagline?.trim(),
+      hackathonId: data.hackathonId,
+      captainId: data.captain.userId,
+      members: [{ ...data.captain, role: "captain", joinedAt: now }],
+      maxSize: data.maxSize ?? 4,
+      isOpen: true,
+      inviteCode,
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      await db.collection("teams").insertOne(newTeam as any);
+    } else {
+      inMemoryStore.teams.unshift(newTeam);
+    }
+    await this.logAction("Team Created", newTeam.name, data.captain.userId);
+    return newTeam;
+  },
+
+  async updateTeam(id: string, updates: Partial<DbTeam>): Promise<boolean> {
+    const now = new Date().toISOString();
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const res = await db.collection("teams").updateOne(
+        { id },
+        { $set: { ...updates, updatedAt: now } }
+      );
+      return res.matchedCount > 0;
+    }
+    const idx = inMemoryStore.teams.findIndex((t) => t.id === id);
+    if (idx !== -1) {
+      inMemoryStore.teams[idx] = { ...inMemoryStore.teams[idx], ...updates, updatedAt: now };
+      return true;
+    }
+    return false;
+  },
+
+  async deleteTeam(id: string): Promise<boolean> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const res = await db.collection("teams").deleteOne({ id });
+      await db.collection("team_join_requests").deleteMany({ teamId: id });
+      await this.logAction("Team Disbanded", id, "System");
+      return res.deletedCount > 0;
+    }
+    const idx = inMemoryStore.teams.findIndex((t) => t.id === id);
+    if (idx !== -1) {
+      inMemoryStore.teams.splice(idx, 1);
+      inMemoryStore.teamJoinRequests = inMemoryStore.teamJoinRequests.filter(
+        (r) => r.teamId !== id
+      );
+      await this.logAction("Team Disbanded", id, "System");
+      return true;
+    }
+    return false;
+  },
+
+  async addTeamMember(teamId: string, member: DbTeamMember): Promise<boolean> {
+    const now = new Date().toISOString();
+    const { db, isUsingMongo } = await connectToDatabase();
+    const newMember: DbTeamMember = { ...member, role: "member", joinedAt: now };
+
+    if (isUsingMongo && db) {
+      const res = await db.collection("teams").updateOne(
+        { id: teamId },
+        { $push: { members: newMember as any }, $set: { updatedAt: now } }
+      );
+      return res.matchedCount > 0;
+    }
+    const team = inMemoryStore.teams.find((t) => t.id === teamId);
+    if (team) {
+      team.members.push(newMember);
+      team.updatedAt = now;
+      return true;
+    }
+    return false;
+  },
+
+  async removeTeamMember(teamId: string, userId: string): Promise<boolean> {
+    const now = new Date().toISOString();
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const res = await db.collection("teams").updateOne(
+        { id: teamId },
+        { $pull: { members: { userId } as any }, $set: { updatedAt: now } }
+      );
+      return res.matchedCount > 0;
+    }
+    const team = inMemoryStore.teams.find((t) => t.id === teamId);
+    if (team) {
+      team.members = team.members.filter((m) => m.userId !== userId);
+      team.updatedAt = now;
+      return true;
+    }
+    return false;
+  },
+
+  async updateMemberRole(
+    teamId: string,
+    userId: string,
+    role: "captain" | "member"
+  ): Promise<boolean> {
+    const now = new Date().toISOString();
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const res = await db.collection("teams").updateOne(
+        { id: teamId, "members.userId": userId },
+        { $set: { "members.$.role": role, updatedAt: now } }
+      );
+      return res.matchedCount > 0;
+    }
+    const team = inMemoryStore.teams.find((t) => t.id === teamId);
+    const member = team?.members.find((m) => m.userId === userId);
+    if (member && team) {
+      member.role = role;
+      team.updatedAt = now;
+      return true;
+    }
+    return false;
+  },
+
+  // ── 11. TEAM JOIN REQUESTS ───────────────────────────────────────────────────
+
+  async getJoinRequestsByTeam(teamId: string): Promise<DbTeamJoinRequest[]> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const list = await db
+        .collection("team_join_requests")
+        .find({ teamId, status: "Pending" })
+        .sort({ createdAt: -1 })
+        .toArray();
+      return list as unknown as DbTeamJoinRequest[];
+    }
+    return inMemoryStore.teamJoinRequests.filter(
+      (r) => r.teamId === teamId && r.status === "Pending"
+    );
+  },
+
+  async getJoinRequestsByUser(userId: string): Promise<DbTeamJoinRequest[]> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const list = await db
+        .collection("team_join_requests")
+        .find({ userId })
+        .sort({ createdAt: -1 })
+        .toArray();
+      return list as unknown as DbTeamJoinRequest[];
+    }
+    return inMemoryStore.teamJoinRequests.filter((r) => r.userId === userId);
+  },
+
+  async hasPendingRequest(teamId: string, userId: string): Promise<boolean> {
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      const doc = await db
+        .collection("team_join_requests")
+        .findOne({ teamId, userId, status: "Pending" });
+      return !!doc;
+    }
+    return inMemoryStore.teamJoinRequests.some(
+      (r) => r.teamId === teamId && r.userId === userId && r.status === "Pending"
+    );
+  },
+
+  async createJoinRequest(data: Omit<DbTeamJoinRequest, "id" | "status" | "createdAt" | "updatedAt">): Promise<DbTeamJoinRequest> {
+    const now = new Date().toISOString();
+    const newReq: DbTeamJoinRequest = {
+      id: `req-${Date.now()}`,
+      ...data,
+      status: "Pending",
+      createdAt: now,
+      updatedAt: now,
+    };
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      await db.collection("team_join_requests").insertOne(newReq as any);
+    } else {
+      inMemoryStore.teamJoinRequests.unshift(newReq);
+    }
+    return newReq;
+  },
+
+  async updateJoinRequest(
+    id: string,
+    status: "Accepted" | "Rejected"
+  ): Promise<DbTeamJoinRequest | null> {
+    const now = new Date().toISOString();
+    const { db, isUsingMongo } = await connectToDatabase();
+    if (isUsingMongo && db) {
+      await db
+        .collection("team_join_requests")
+        .updateOne({ id }, { $set: { status, updatedAt: now } });
+      const doc = await db.collection("team_join_requests").findOne({ id });
+      return doc as unknown as DbTeamJoinRequest | null;
+    }
+    const req = inMemoryStore.teamJoinRequests.find((r) => r.id === id);
+    if (req) {
+      req.status = status;
+      req.updatedAt = now;
+      return req;
+    }
+    return null;
   },
 };

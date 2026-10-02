@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     title: "National Hackathons & Coding Sprints | NEXHACK",
     description:
       "Join premier student hackathons and innovation sprints. Compete with top student developers and creators across the country.",
-    url: "https://nexhack.tech/hackathons",
+    url: "https://nexhack.in/hackathons",
     images: [
       {
-        url: "https://nexhack.tech/og-image.png",
+        url: "https://nexhack.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "NEXHACK Hackathons",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "National Hackathons & Coding Sprints | NEXHACK",
     description: "Compete in national student hackathons, win cash prizes, and connect with top tech teams.",
-    images: ["https://nexhack.tech/og-image.png"],
+    images: ["https://nexhack.in/og-image.png"],
   },
 };
 
@@ -52,13 +52,13 @@ export default function HackathonsLayout({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://nexhack.tech",
+        item: "https://nexhack.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Hackathons",
-        item: "https://nexhack.tech/hackathons",
+        item: "https://nexhack.in/hackathons",
       },
     ],
   };
@@ -93,14 +93,14 @@ export default function HackathonsLayout({
         organizer: {
           "@type": "Organization",
           name: "NEXHACK",
-          url: "https://nexhack.tech",
+          url: "https://nexhack.in",
         },
         offers: {
           "@type": "Offer",
           price: "0",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
-          url: "https://nexhack.tech/hackathons",
+          url: "https://nexhack.in/hackathons",
         },
       },
     })),
