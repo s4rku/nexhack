@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   Sparkles,
   ArrowRight,
@@ -8,6 +9,7 @@ import {
   Users,
   CheckCircle2,
   Zap,
+  Building2,
 } from "lucide-react";
 
 interface HeroSectionProps {
@@ -69,13 +71,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
 
-              <button
-                onClick={onJoinClick}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs sm:text-sm border border-slate-300 shadow-xs hover:border-slate-400 transition-all cursor-pointer"
+              <Link
+                href="/campus"
+                className="group flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs sm:text-sm border border-slate-300 shadow-xs hover:border-purple-400 hover:text-purple-700 transition-all cursor-pointer"
               >
-                <Users className="w-4 h-4 text-indigo-600" />
-                <span>Join NEXHACK</span>
-              </button>
+                <Building2 className="w-4 h-4 text-purple-600" />
+                <span>Host on Campus</span>
+              </Link>
             </div>
 
             {/* Secondary Subtext */}

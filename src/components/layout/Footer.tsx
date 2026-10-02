@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onJoinClick }) => {
   return (
     <footer className="bg-slate-900 text-slate-300 pt-12 sm:pt-16 pb-10 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-10 sm:pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10 pb-10 sm:pb-12 border-b border-slate-800">
           {/* Brand Info */}
           <div className="sm:col-span-2 space-y-3.5">
             <Link href="/" className="flex items-center gap-2 group focus:outline-hidden">
@@ -134,11 +134,38 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onJoinClick }) => {
                 </button>
               </li>
               <li>
+                <button
+                  onClick={() => onOpenLegal("code_of_conduct")}
+                  className="hover:text-blue-400 transition-colors cursor-pointer text-left"
+                >
+                  Code of Conduct
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Contact */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3 sm:mb-4">
+              Contact
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li className="space-y-0.5">
+                <p className="text-slate-500 text-[10px] uppercase tracking-wider font-semibold">Support</p>
                 <a
                   href={`mailto:${SITE_CONFIG.supportEmail}`}
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-400 transition-colors block"
                 >
-                  support@nexhack.in
+                  {SITE_CONFIG.supportEmail}
+                </a>
+              </li>
+              <li className="space-y-0.5">
+                <p className="text-slate-500 text-[10px] uppercase tracking-wider font-semibold">Founder</p>
+                <a
+                  href={`mailto:${SITE_CONFIG.founderEmail}`}
+                  className="hover:text-blue-400 transition-colors block"
+                >
+                  {SITE_CONFIG.founderEmail}
                 </a>
               </li>
               <li>
@@ -146,16 +173,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onJoinClick }) => {
                   href={`tel:${SITE_CONFIG.phone}`}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  {SITE_CONFIG.phone}
+                  +91 {SITE_CONFIG.phone}
                 </a>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenLegal("code_of_conduct")}
-                  className="hover:text-blue-400 transition-colors cursor-pointer text-left"
-                >
-                  Code of Conduct
-                </button>
               </li>
             </ul>
           </div>

@@ -86,7 +86,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type })
           <h5 className="font-bold text-slate-900 text-sm">Reporting Violations</h5>
           <p>
             If you experience or witness any form of unacceptable behavior, notify a NEXHACK
-            organizer or community moderator immediately at conduct@nexhack.tech.
+            organizer or community moderator immediately at conduct@nexhack.in.
           </p>
         </div>
       ),

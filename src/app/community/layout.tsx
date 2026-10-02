@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     title: "Join NEXHACK Student Community | Builders & Innovators",
     description:
       "Find hackathon teammates, get code reviews, participate in game nights, and build real-world software together.",
-    url: "https://nexhack.tech/community",
+    url: "https://nexhack.in/community",
     images: [
       {
-        url: "https://nexhack.tech/og-image.png",
+        url: "https://nexhack.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "NEXHACK Community",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Join NEXHACK Student Tech Community",
     description: "Connect with thousands of student developers, designers, and hackathon competitors.",
-    images: ["https://nexhack.tech/og-image.png"],
+    images: ["https://nexhack.in/og-image.png"],
   },
 };
 
@@ -50,13 +50,13 @@ export default function CommunityLayout({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://nexhack.tech",
+        item: "https://nexhack.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Community",
-        item: "https://nexhack.tech/community",
+        item: "https://nexhack.in/community",
       },
     ],
   };

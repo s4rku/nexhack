@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     title: "Tech Events & Knowledge Sessions | NEXHACK",
     description:
       "Hands-on technical workshops, architecture deep dives, and expert mentorship sessions for student engineers.",
-    url: "https://nexhack.tech/events",
+    url: "https://nexhack.in/events",
     images: [
       {
-        url: "https://nexhack.tech/og-image.png",
+        url: "https://nexhack.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "NEXHACK Tech Events & Workshops",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tech Events & Workshops | NEXHACK",
     description: "Hands-on workshops, system design sessions, and mentorship for student developers.",
-    images: ["https://nexhack.tech/og-image.png"],
+    images: ["https://nexhack.in/og-image.png"],
   },
 };
 
@@ -52,13 +52,13 @@ export default function EventsLayout({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://nexhack.tech",
+        item: "https://nexhack.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Events & Sessions",
-        item: "https://nexhack.tech/events",
+        item: "https://nexhack.in/events",
       },
     ],
   };
@@ -78,7 +78,7 @@ export default function EventsLayout({
         eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
         location: {
           "@type": "VirtualLocation",
-          url: "https://nexhack.tech/events",
+          url: "https://nexhack.in/events",
         },
         performer: {
           "@type": "Person",
@@ -88,14 +88,14 @@ export default function EventsLayout({
         organizer: {
           "@type": "Organization",
           name: "NEXHACK",
-          url: "https://nexhack.tech",
+          url: "https://nexhack.in",
         },
         offers: {
           "@type": "Offer",
           price: "0",
           priceCurrency: "INR",
           availability: "https://schema.org/InStock",
-          url: "https://nexhack.tech/events",
+          url: "https://nexhack.in/events",
         },
       },
     })),

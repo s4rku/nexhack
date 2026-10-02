@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SessionProvider } from "@/components/providers/SessionProvider";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -45,10 +46,10 @@ export const metadata: Metadata = {
     "AI hackathons",
     "web development competitions",
   ],
-  authors: [{ name: "NEXHACK Community", url: "https://nexhack.tech" }],
+  authors: [{ name: "NEXHACK Community", url: "https://nexhack.in" }],
   creator: "NEXHACK",
   publisher: "NEXHACK",
-  metadataBase: new URL("https://nexhack.tech"),
+  metadataBase: new URL("https://nexhack.in"),
   alternates: {
     canonical: "/",
   },
@@ -56,13 +57,13 @@ export const metadata: Metadata = {
     title: "NEXHACK | Build the Future. Hack What's Next.",
     description:
       "A student-driven technology community organizing hackathons, technical workshops, knowledge sessions, and innovation challenges across schools and colleges.",
-    url: "https://nexhack.tech",
+    url: "https://nexhack.in",
     siteName: "NEXHACK",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://nexhack.tech/og-image.png",
+        url: "https://nexhack.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "NEXHACK Student Tech Community & Hackathons",
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
     title: "NEXHACK | Student Tech Community & Hackathons",
     description: "Build. Hack. Learn. Connect. Join the premier student technology ecosystem.",
     creator: "@nexhack_in",
-    images: ["https://nexhack.tech/og-image.png"],
+    images: ["https://nexhack.in/og-image.png"],
   },
   icons: {
     icon: [
@@ -112,12 +113,12 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "NEXHACK",
-    url: "https://nexhack.tech",
-    logo: "https://nexhack.tech/logo-icon.png",
+    url: "https://nexhack.in",
+    logo: "https://nexhack.in/logo-icon.png",
     description:
       "Student-driven technology community organizing national hackathons, technical workshops, knowledge sessions, and innovation experiences.",
     foundingDate: "2024",
-    email: "hello@nexhack.tech",
+    email: "hello@nexhack.in",
     sameAs: [
       "https://x.com/nexhack_in",
       "https://linkedin.com/company/nexhack",
@@ -138,7 +139,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "NEXHACK",
-    url: "https://nexhack.tech",
+    url: "https://nexhack.in",
     description: "The Next Generation Student Tech Community & National Hackathons",
     publisher: {
       "@type": "Organization",
@@ -159,7 +160,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-white text-[#0A0F1D] font-sans antialiased selection:bg-blue-600 selection:text-white">
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );

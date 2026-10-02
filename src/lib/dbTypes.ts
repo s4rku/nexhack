@@ -103,3 +103,66 @@ export interface DbAdminOtp {
   createdAt: string;
 }
 
+
+// ── User Profile ─────────────────────────────────────────────────────────────
+export interface DbUserProfile {
+  _id?: string;
+  userId: string;           // JWT sub / session.user.id
+  email: string;
+  displayName?: string;
+  bio?: string;
+  college?: string;
+  course?: string;
+  graduationYear?: string;
+  avatarUrl?: string;       // Cloudinary secure_url (overrides OAuth avatar)
+  avatarPublicId?: string;  // for Cloudinary deletion
+  githubUrl?: string;
+  linkedinUrl?: string;
+  twitterUrl?: string;
+  skills?: string[];        // e.g. ["React", "Python", "ML"]
+  createdAt: string;
+  updatedAt: string;
+}
+
+// ── Team ─────────────────────────────────────────────────────────────────────
+export type TeamMemberRole = "captain" | "member";
+
+export interface DbTeamMember {
+  userId: string;
+  displayName: string;
+  avatarUrl?: string;
+  email: string;
+  role: TeamMemberRole;
+  joinedAt: string;
+}
+
+export interface DbTeam {
+  _id?: string;
+  id: string;
+  name: string;
+  tagline?: string;
+  hackathonId?: string;     // optional link to a specific hackathon
+  captainId: string;        // userId of captain
+  members: DbTeamMember[];
+  maxSize: number;          // default 4
+  isOpen: boolean;          // accepting join requests
+  inviteCode: string;       // short random code for direct join
+  createdAt: string;
+  updatedAt: string;
+}
+
+// ── Team Join Request ─────────────────────────────────────────────────────────
+export interface DbTeamJoinRequest {
+  _id?: string;
+  id: string;
+  teamId: string;
+  teamName: string;
+  userId: string;
+  userDisplayName: string;
+  userEmail: string;
+  userAvatarUrl?: string;
+  message?: string;
+  status: "Pending" | "Accepted" | "Rejected";
+  createdAt: string;
+  updatedAt: string;
+}
